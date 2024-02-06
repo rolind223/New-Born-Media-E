@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+      <div class="flex flex-col items-center my-8">
+        <h1 class="text-center text-3xl">{{ section.settings.title }}</h1>
+      </div>
+    </div>
+
+
+
+      {% comment %}<div class="max-w-6xl mx-auto">{% endcomment %}
+        {% comment %}<div class="grid grid-cols-1 md:grid-cols-4 gap-4">{% endcomment %}
+        {% for product in section.settings.featured_collection.products limit: section.settings.number_of_products_to_show %}
+          {% case block.type %}
+            {% when 'checkout_buttons'  %}
+              <a href="{{ product_product.url }}">
+                <div class="my-3">
+                  <button type="submit" name="add" class="whitespace-nowrap text-base text-gray-500 hover:text-gray-900"
+                          {% if selected_variant.available == false %}
+                            disabled
+                          {% endif %}
+                  >
+                    {% if selected_variant.available == false %}
+                      Sold out
+                    {% else %}
+                      {% render 'icon-heart' %}
+                    {% endif %}
+                  </button>
+                </div>
+              </a>
+            {% endcase %}
+
+    <div class="col-xl-3 col-md-3 col-sm-6 col-6">
+          {% render 'product-card', product_product: product %}
+    </div>
+        {% else %}
+          {% for item in (1..4) %}
+            {% render 'product-card-placeholder' %}
+          {% endfor %}
+        {% endfor %}
+        {% comment %}</div>{% endcomment %}
+      {% comment %}</div>{% endcomment %}
+
+  </div>
+</div>
+
+
+
+
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Featured Collection",
+      "label": "Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner"
+    },
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "number_of_products_to_show",
+      "min": 4,
+      "max": 12,
+      "default": 4,
+      "label": "Number of products to show"
+    },
+    {
+      "type": "url",
+      "id": "gallery_url",
+      "label": "Image url"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "checkout_buttons",
+      "name": "Checkout Buttons",
+      "limit": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection"
+    }
+  ]
+}
+{% endschema %}
