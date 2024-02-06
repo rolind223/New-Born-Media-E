@@ -1,7 +1,6 @@
 <div class="w-full py-6 px-3">
     <div class="border w-full h-full bg-white shadow-lg rounded-3xl overflow-hidden bg-red-900">
         <a href="{{ product_product.url }}">
-
             {% if product_product.featured_image %}
 
                 <div class="overflow-hidden flex justify-center mt-4 mx-4 bg-gray-100 rounded-3xl">
@@ -34,16 +33,24 @@
                 </a>
             </div>
         </div>
+        <div style="width: 5rem">
+            <button type="button" aria-label="Add to wishlist" style="width: 5rem" class="" button-wishlist data-product-handle="{{ product.handle }}">
+                <style scoped>
+                    .icon {
+                        fill: transparent;
+                        stroke: #000000;
+                        transition: fill 0.3s ease;
+                    }
+
+                    .active .icon {
+                        fill: red;
+                        stroke: #000000;
+                    }
+                </style>
+                {% render 'icon-heart' %}
+            </button>
+        </div>
+
     </div>
 </div>
-{% render 'button-wishlist', product_product: product %}
-
-<script>
-    const selectors = {
-        button: '[button-wishlist]',
-        grid: '[grid-wishlist]',
-        productCard: '.product-item', // your classname here
-    };
-</script>
-
 
