@@ -12,13 +12,13 @@
   {{ 'font-styles.css' | asset_url | stylesheet_tag }}
 </head>
 <body>
-  {% section 'translation' %}
+  {% comment %}{% section 'translation' %}{% endcomment %}
   {% section 'header' %}
 
   <main role="main">
     {{ content_for_layout }}
   </main>
-  
-  {% section 'footer-section' %}
+
+  {% comment %}{% section 'footer-section' %}{% endcomment %}
 </body>
 </html>
