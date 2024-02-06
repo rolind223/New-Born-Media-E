@@ -1,6 +1,52 @@
 {
-  "current": "Default",
+  "current": {
+    "page_width": 1200,
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "mobile_menu_title": "Menu",
+          "menu": "main-menu",
+          "logo": "shopify:\/\/shop_images\/Untitled-2_53b27b42-efc3-498f-9b4e-0b53d29770de.png",
+          "logo_width": 35,
+          "background_color": "#ffffff",
+          "text_color": "#111111",
+          "border_bottom_color": "#ffd74b",
+          "link_color": "#111111"
+        }
+      },
+      "homepage": {
+        "type": "homepage",
+        "settings": {
+        }
+      }
+    },
+    "content_for_index": [
+
+    ],
+    "blocks": {
+      "9537345080411485756": {
+        "type": "shopify:\/\/apps\/product-review-myappgurus\/blocks\/Collection_star\/0cf5caa0-e138-46b8-999b-520d16633e4c",
+        "disabled": false,
+        "settings": {
+          "collection_target_class": "",
+          "hide_name": false,
+          "hide_email": false,
+          "hide_title": false,
+          "hide_description": false,
+          "hide_image": false
+        }
+      },
+      "8813254906777318544": {
+        "type": "shopify:\/\/apps\/k-wishlist\/blocks\/app-embeded\/21053a4c-1902-4720-aab8-ebfc69de009a",
+        "disabled": true,
+        "settings": {
+        }
+      }
+    }
+  },
   "presets": {
-    "Default": { }
+    "Default": {
+    }
   }
 }

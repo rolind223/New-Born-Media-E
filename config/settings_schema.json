@@ -4,8 +4,8 @@
     "theme_name": "Leena",
     "theme_version": "1.0.0",
     "theme_author": "WeeklyHow",
-    "theme_documentation_url": "https://weeklyhow.com/blog",
-    "theme_support_url": "https://weeklyhow.com/contact"
+    "theme_documentation_url": "https://github.com/Shopify/themekit",
+    "theme_support_url": "https://github.com/Shopify/themekit/issues"
   },
   {
     "name": "Navigational Bar Colors Setting",
@@ -54,6 +54,59 @@
         "min": 13,
         "max": 25,
         "step": 1
+      }
+    ]
+  },
+  {
+    "name": "Page settings",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "label": "Page width",
+        "default": 1200,
+        "min": 800,
+        "max": 1600,
+        "step": 50
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#111111"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text color",
+        "default": "#111111"
+      }
+    ]
+  },
+  {
+    "name": "Border-color-bottom",
+    "settings": [
+      {
+        "type": "color",
+        "id": "border_bottom_color",
+        "label": "Border Bottom Color Header",
+        "default": "#ffd74b"
+      }
+    ]
+  },
+  {
+    "name": "Header-link-color",
+    "settings": [
+      {
+        "type": "color",
+        "id": "link_color",
+        "label": "Header Link Color",
+        "default": "#111111"
       }
     ]
   }
