@@ -6,5 +6,7 @@
       }
     }
   },
-  "order": ["template"]
+  "order": [
+    "template"
+  ]
 }
