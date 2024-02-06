@@ -1,0 +1,219 @@
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js" defer></script>
+<style>
+    .button1-final-color{
+        background-color: {{ section.settings.background_color-button1 }};
+    }
+    .button1-text-color{
+        color: {{ section.settings.text_color-button1 }};
+    }
+    .button2-final-color{
+        background-color: {{ section.settings.background_color-button2 }};
+    }
+    .button2-text-color{
+        color: {{ section.settings.text_color-button2 }};
+    }
+    .swiper-button-prev, .swiper-button-next { color: black; top: auto !important; height: 20px; }
+    .swiper-button-prev::after, .swiper-button-next::after { font-size: 20px; }
+    .swiper-pagination { color: black; bottom: 0 !important; }
+    .swiper-pagination-bullet-active { background: black !important; }
+    .product--information { height: fit-content; }
+
+    .logo-bar__image{
+        width: 100% !important;
+        height: 80vh !important;
+    }
+</style>
+<div class="container-fluid" style="margin: 0; padding: 0">
+    <div class="row">
+        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+            <div class="banner" style=" position: relative;">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        {% for block in section.blocks %}
+                            <div class="swiper-slide">
+                                <div>
+                                    {{ block.settings.image | img_url: '100%', scale: 2 | img_tag: block.settings.image.alt, 'logo-bar__image' }}
+                                </div>
+
+                                <div style="
+                                          position: absolute;
+                                          top: 50%;
+                                          left: 50%;
+                                          transform: translate(-50%, -50%);
+                                        ">
+                                    <div class="font-bold my-4 ">
+                                        <h1 style="font-size: 2rem">{{ block.settings.title }}</h1>
+                                    </div>
+                                    <div class="col-xl-6 col-md-6 col-sm-12 col-12 my-4">
+                                        <p class="text-base md:text-xl leading-normal">{{ block.settings.subtext_title }}</p>
+                                    </div>
+                                    <div class="col-xl-6 col-md-6 col-sm-12 col-12 my-4">
+                                        {% if block.settings.button_url == blank %}
+                                            {% assign shop_url = shop.secure_url %}
+                                        {% else %}
+                                            {% assign shop_url = block.settings.button_url %}
+                                        {% endif %}
+                                        <a href="{{ shop_url }}" class="px-4 rounded-lg inline py-2 text-base font-medium shadow button1-final-color button1-text-color hover:bg-green-800">{{ block.settings.button_label }}</a>
+                                        <a href="{{ shop_url }}" class="px-4 rounded-lg inline py-2 text-base font-medium shadow button2-final-color button2-text-color hover:bg-green-800">{{ block.settings.button_label2 }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+</div>
+
+<div class="container">
+    <div class="row bg-gray-200 py-16 my-20 rounded-3xl">
+        <div class="col-xl-4 col-md-4 col-sm-4 col-4 flex justify-center">
+            <div class="flex" style="width: 60%; justify-content: space-between">
+                <div class="flex items-center justify-center">
+                    {% render 'icon-truck' %}
+                </div>
+
+                <div>
+                    <h1 class="font-bold text-2xl">Free Shipping</h1>
+                    <p>When ordering over $100</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-md-4 col-sm-4 col-4 flex justify-center">
+            <div class="flex" style="width: 60%; justify-content: space-between">
+                <div class="flex items-center justify-center">
+                    {% render 'icon-shield' %}
+                </div>
+
+                <div>
+                    <h1 class="font-bold text-2xl">Free Shipping</h1>
+                    <p>When ordering over $100</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-md-4 col-sm-4 col-4 flex justify-center">
+            <div class="flex" style="width: 60%; justify-content: space-between">
+                <div class="flex items-center justify-center">
+                    {% render 'icon-trophy' %}
+                </div>
+
+                <div>
+                    <h1 class="font-bold text-2xl">Free Shipping</h1>
+                    <p>When ordering over $100</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        try {
+            const swiper = new Swiper('.swiper', {
+                direction: 'horizontal',
+
+                pagination: {
+                    el: '.swiper-pagination'
+                },
+
+                navigation: {
+                    prevEl: '.swiper-button-prev',
+                    nextEl: '.swiper-button-next'
+                }
+            })
+        } catch(e) { console.log("SwiperJS is not defined"); }
+    })
+
+</script>
+
+{% schema %}
+{
+  "name": "multi image",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "header",
+      "content": "button color style"
+    },
+    {
+      "type": "color",
+      "id": "background_color-button1",
+      "label": "Button1 Background Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "text_color-button1",
+      "label": "Button1 Text Color",
+      "default": "#111"
+    },
+    {
+      "type": "color",
+      "id": "background_color-button2",
+      "label": "Button2 Background Color",
+      "default": "#111"
+    },
+    {
+      "type": "color",
+      "id": "text_color-button2",
+      "label": "Button2 Text Color",
+      "default": "#fff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "select",
+      "name": "Add Button",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Add image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Powerful performance, anywhere you go",
+          "label": "Title"
+        },
+
+        {
+          "type": "text",
+          "id": "subtext_title",
+          "default": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo inididunt ut baire et dolore magna aliqua.",
+          "label": "404 Subtext Title"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "Buy Now",
+          "label": "Button1 Label"
+        },
+        {
+          "type": "text",
+          "id": "button_label2",
+          "default": "Explore",
+          "label": "Button2 Label"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "multi image",
+      "category": "text"
+    }
+  ]
+}
+{% endschema %}
